@@ -33,9 +33,9 @@ to build an online store.
 ## User Stories 
 <br>
 
+- As a user, I want to be able to view all the items available for purchase.
 - As a user, I want to be able to add items to my shopping cart.
-- As a user, I want to be able to remove an item from my shopping cart.
+- As a user, I want to be able to remove items from my shopping cart.
 - As a user, I want to be able to view a list of all the items I've added to my shopping cart. 
 - As a user, I want to be able to get the total cost of my shopping cart.
-- As a user, I want to be able to checkout my shopping cart.
-- As a user, I want to be able to view all the items available for purchase. 
+
