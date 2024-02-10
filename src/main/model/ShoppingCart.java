@@ -7,24 +7,43 @@ import java.util.ArrayList;
 public class ShoppingCart {
     private ArrayList<Item> shoppingCartList;
 
+
+    // EFFECTS: constructs a list of items added to shopping cart, initialized as empty
     public ShoppingCart() {
         this.shoppingCartList = new ArrayList<Item>();
     }
 
+
+    // REQUIRES: item != null
+    // MODIFIES: this
+    // EFFECTS: adds item to shopping cart list
     public void addItem(Item item) {
         shoppingCartList.add(item);
     }
 
+
+    // REQUIRES: item != null
+    // MODIFIES: this
+    // EFFECTS: removes item from shopping cart list
     public void removeItem(Item item) {
         shoppingCartList.remove(item);
     }
 
-    public void getShoppingCartList() {
-        // stub
+
+    public ArrayList<Item> getShoppingCartList() {
+        return shoppingCartList;
     }
 
+
+    // EFFECTS: returns total cost of all items in shopping cart list
     public Double getTotalCost() {
-        return 0.0;
+        Double currentAmount = 0.00;
+
+        for (Item item : shoppingCartList) {
+            currentAmount += item.getCost();
+        }
+
+        return currentAmount;
     }
 
 }
