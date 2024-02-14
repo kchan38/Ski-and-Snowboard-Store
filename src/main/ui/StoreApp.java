@@ -63,12 +63,18 @@ public class StoreApp {
         Item item1 = new Item("Rainbow Skis", 599.99);
         Item item2 = new Item("FeelGood Snowboard", 499.99);
         Item item3 = new Item("Salomon Ski Boots", 349.99);
+        Item item4 = new Item("K2 Snowboard Boots", 299.99);
+        Item item5 = new Item("Oakley Ski Goggles", 189.99);
+        Item item6 = new Item("Smith Ski Helmet", 196.99);
 
         this.itemsAvailable = new ArrayList<Item>();
 
         itemsAvailable.add(item1);
         itemsAvailable.add(item2);
         itemsAvailable.add(item3);
+        itemsAvailable.add(item4);
+        itemsAvailable.add(item5);
+        itemsAvailable.add(item6);
 
         this.shoppingCart = new ShoppingCart();
 
@@ -104,7 +110,7 @@ public class StoreApp {
     }
 
 
-    // EFFECTS: returns item given item name
+    // EFFECTS: returns item given item name, null if no match
     private Item findItemByName(String itemName) {
 
         for (Item item : itemsAvailable) {
@@ -116,7 +122,8 @@ public class StoreApp {
     }
 
 
-    // EFFECTS: displays item that user selected
+    // EFFECTS: displays item that user selected. if null, will prompt user to try again.
+    //          if selected, will ask user if they want to add item to cart.
     private void selectItem() {
         String command = null;
         command = input.next();
@@ -133,9 +140,10 @@ public class StoreApp {
     }
 
 
-    // MODIFIES: this
-    // EFFECTS: allows user to decide to add item to shopping cart or not
-    //          will add item to shopping cart if user selects yes
+    // MODIFIES: shoppingCart
+    // EFFECTS: allows user to decide to add item to shopping cart or not.
+    //          adds item to shopping cart if user types yes.
+    //          then allows user to decide to view shopping cart or not.
     private void decideToAddItem(Item item) {
         System.out.println("Would you like to add this item to your shopping cart?");
         System.out.println("Type 'Yes' or 'No'");
@@ -176,15 +184,14 @@ public class StoreApp {
 
 
     // EFFECTS: displays all items and total cost in user's shopping cart
+    //          then displays shopping cart menu
     private void displayShoppingCart() {
         System.out.println("Shopping Cart: ");
 
         for (Item item : shoppingCart.getShoppingCartList()) {
             System.out.println(item.getName() + " $" + item.getCost());
         }
-
         System.out.println("Total Cost: $" + shoppingCart.getTotalCost());
-
         displayShoppingCartMenu();
     }
 
@@ -213,7 +220,9 @@ public class StoreApp {
     }
 
 
+    // EFFECTS: checkout items in shopping cart
     public void doCheckout() {
+        // stub
         // TODO: will implement this method later on
     }
 
@@ -237,7 +246,7 @@ public class StoreApp {
     }
 
 
-    // MODIFIES: this
+    // MODIFIES: shoppingCart
     // EFFECTS: removes item from shopping cart list
     public void doRemoveItem(Item item) {
         shoppingCart.removeItem(item);

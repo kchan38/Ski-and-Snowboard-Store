@@ -30,6 +30,7 @@ public class ShoppingCart {
     }
 
 
+    // EFFECTS: returns shopping cart list
     public ArrayList<Item> getShoppingCartList() {
         return shoppingCartList;
     }
