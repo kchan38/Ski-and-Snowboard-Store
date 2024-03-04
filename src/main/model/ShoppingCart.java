@@ -3,8 +3,8 @@ package model;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
-
 import java.util.ArrayList;
+
 
 // User's shopping cart list of items they want to purchase
 public class ShoppingCart implements Writable {

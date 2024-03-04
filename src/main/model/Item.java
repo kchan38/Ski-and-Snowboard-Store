@@ -3,6 +3,7 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+
 // An item being sold in the Ski and Snowboard Store
 public class Item implements Writable {
     private String name;
@@ -78,12 +79,6 @@ public class Item implements Writable {
     // TODO: future method to add to ui store app (allows store owner to make item available)
     public void makeItemAvailable() {
         isAvailable = true;
-    }
-
-
-    // EFFECTS: returns string representation of this item
-    public String toString() {
-        return name + ": $" + cost;
     }
 
 

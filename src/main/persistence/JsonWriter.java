@@ -2,10 +2,10 @@ package persistence;
 
 import model.ShoppingCart;
 import org.json.JSONObject;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+
 
 // Represents a writer that writes JSON representation of ShoppingCart to file
 // CITATION: Copied from JsonSerializationDemo - WorkroomApp.java
