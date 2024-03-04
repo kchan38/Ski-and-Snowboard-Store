@@ -38,4 +38,6 @@ to build an online store.
 - As a user, I want to be able to remove items from my shopping cart.
 - As a user, I want to be able to view a list of all the items I've added to my shopping cart. 
 - As a user, I want to be able to get the total cost of my shopping cart.
+- As a user, I want to have the option to save my shopping cart list to file (from the main menu).
+- As a user, I want to have the option to load my shopping cart list from file when I start the application. 
 

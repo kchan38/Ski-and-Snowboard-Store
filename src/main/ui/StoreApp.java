@@ -2,7 +2,11 @@ package ui;
 
 import model.Item;
 import model.ShoppingCart;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,9 +17,17 @@ public class StoreApp {
     private ShoppingCart shoppingCart;
     private Scanner input;
 
+    private static final String JSON_STORE = "./data/shoppingCart.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
+
 
     // EFFECTS: initializes the store
     public StoreApp() {
+        input = new Scanner(System.in);
+        shoppingCart = new ShoppingCart();
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runStore();
     }
 
@@ -44,13 +56,28 @@ public class StoreApp {
     }
 
 
+    // EFFECTS: displays main menu of options to user
+    private void displayMainMenu() {
+        System.out.println("\nWhat would you like to do today?");
+        System.out.println("\tType 'items' = View List of Items Available");
+        System.out.println("\tType 'cart' = View Shopping Cart");
+        System.out.println("\tType 'save' = Save Shopping Cart to File");
+        System.out.println("\tType 'load' = Load Shopping Cart from File");
+        System.out.println("\tType 'quit' = Quit Store");
+    }
+
+
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
-        if (command.equals("view items")) {
+        if (command.equals("items")) {
             doViewItems();
-        } else if (command.equals("view shopping cart")) {
+        } else if (command.equals("cart")) {
             decideToViewShoppingCart();
+        } else if (command.equals("save")) {
+            saveShoppingCart();
+        } else if (command.equals("load")) {
+            loadShoppingCart();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -80,15 +107,6 @@ public class StoreApp {
 
         input = new Scanner(System.in);
         input.useDelimiter("\n");
-    }
-
-
-    // EFFECTS: displays main menu of options to user
-    private void displayMainMenu() {
-        System.out.println("\nWhat would you like to do today?");
-        System.out.println("\tType 'view items' = View List of Items Available");
-        System.out.println("\tType 'view shopping cart' = View Shopping Cart");
-        System.out.println("\tType 'quit' = Quit Store");
     }
 
 
@@ -251,6 +269,33 @@ public class StoreApp {
     public void doRemoveItem(Item item) {
         shoppingCart.removeItem(item);
         displayShoppingCart();
+    }
+
+
+    // EFFECTS: saves the shoppingCart to file
+    // CITATION: Copied from JsonSerializationDemo - WorkroomApp.java
+    private void saveShoppingCart() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(shoppingCart);
+            jsonWriter.close();
+            System.out.println("Saved Shopping Cart to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to save to file: " + JSON_STORE);
+        }
+    }
+
+
+    // MODIFIES: this
+    // EFFECTS: loads shoppingCart from file
+    // CITATION: Copied from JsonSerializationDemo - WorkroomApp.java
+    private void loadShoppingCart() {
+        try {
+            shoppingCart = jsonReader.read();
+            System.out.println("Loaded Shopping Cart from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
 

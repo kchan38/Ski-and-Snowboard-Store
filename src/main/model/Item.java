@@ -1,8 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
 
 // An item being sold in the Ski and Snowboard Store
-public class Item {
+public class Item implements Writable {
     private String name;
     private Double cost;
     private boolean isAvailable;
@@ -28,6 +30,11 @@ public class Item {
         return this.cost;
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets availability of this item
+    public void setIsAvailable(Boolean newAvailability) {
+        this.isAvailable = newAvailability;
+    }
 
     // MODIFIES: this
     // EFFECTS: sets cost of item
@@ -61,9 +68,26 @@ public class Item {
 
     // MODIFIES: this
     // EFFECTS: makes item available
-    // TODO: future method to add to ui store app (allows store owner to make item not available)
+    // TODO: future method to add to ui store app (allows store owner to make item available)
     public void makeItemAvailable() {
         isAvailable = true;
+    }
+
+
+    // EFFECTS: returns string representation of this item
+    public String toString() {
+        return name + ": $" + cost;
+    }
+
+
+    // CITATION: Copied from JsonSerializationDemo - WorkroomApp.java
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("cost", cost);
+        json.put("isAvailable", isAvailable);
+        return json;
     }
 
 }

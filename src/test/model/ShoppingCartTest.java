@@ -64,6 +64,11 @@ public class ShoppingCartTest {
     @Test
     void testGetShoppingCartList() {
         assertFalse(null == testShoppingCart.getShoppingCartList());
+
+        Item item1 = new Item("Pink Skis", 589.99);
+        testShoppingCart.addItem(item1);
+        assertEquals(item1, testShoppingCart.getShoppingCartList().get(0));
+
     }
 
 
