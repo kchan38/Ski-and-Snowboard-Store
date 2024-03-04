@@ -1,0 +1,17 @@
+{"shoppingCartList": [
+    {
+        "isAvailable": true,
+        "cost": 599.99,
+        "name": "Rainbow Skis"
+    },
+    {
+        "isAvailable": true,
+        "cost": 196.99,
+        "name": "Smith Ski Helmet"
+    },
+    {
+        "isAvailable": true,
+        "cost": 499.99,
+        "name": "FeelGood Snowboard"
+    }
+]}

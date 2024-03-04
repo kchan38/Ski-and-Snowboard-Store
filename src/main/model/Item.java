@@ -30,6 +30,13 @@ public class Item implements Writable {
         return this.cost;
     }
 
+
+    // EFFECTS: returns true if item is available, false otherwise
+    public Boolean getIsAvailable() {
+        return this.isAvailable;
+    }
+
+
     // MODIFIES: this
     // EFFECTS: sets availability of this item
     public void setIsAvailable(Boolean newAvailability) {
