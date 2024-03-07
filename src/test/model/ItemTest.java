@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -59,6 +60,20 @@ public class ItemTest {
 
         testItem.makeItemAvailable();
         assertTrue(testItem.isAvailable());
+    }
+
+
+    @Test
+    void testToJsonItem() {
+        assertTrue(testItem.getIsAvailable());
+
+        JSONObject itemJsonObject = new JSONObject();
+        itemJsonObject.put("name", testItem.getName());
+        itemJsonObject.put("cost", testItem.getCost());
+        itemJsonObject.put("isAvailable", testItem.getIsAvailable());
+
+        assertEquals(itemJsonObject.toString(),testItem.toJson().toString());
+
     }
 
 

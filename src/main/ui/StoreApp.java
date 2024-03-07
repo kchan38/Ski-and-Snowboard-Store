@@ -16,7 +16,7 @@ public class StoreApp {
     private ShoppingCart shoppingCart;
     private Scanner input;
 
-    private static final String JSON_STORE = "./data/testReaderShoppingCart3Items.json";
+    private static final String JSON_STORE = "./data/ShoppingCart.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 

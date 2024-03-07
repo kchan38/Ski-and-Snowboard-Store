@@ -82,6 +82,8 @@ public class Item implements Writable {
     }
 
 
+    // EFFECTS: returns a JSON Object with name/cost/isAvailable as key, and
+    //          the corresponding name/cost/isAvailable as value
     // CITATION: Copied from JsonSerializationDemo - WorkroomApp.java
     @Override
     public JSONObject toJson() {

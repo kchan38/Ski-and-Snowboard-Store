@@ -1,9 +1,11 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class ShoppingCartTest {
@@ -91,6 +93,28 @@ public class ShoppingCartTest {
 
         testShoppingCart.removeItem(item3);
         assertEquals( 0.0, testShoppingCart.getTotalCost());
+    }
+
+
+    @Test
+    void testToJsonMultipleItems() {
+        Item item1 = new Item("Pink Skis", 589.99);
+        assertTrue(item1.getIsAvailable());
+        testShoppingCart.addItem(item1);
+
+        Item item2 = new Item("Blue Skis", 799.99);
+        assertTrue(item1.getIsAvailable());
+        testShoppingCart.addItem(item2);
+
+        JSONArray jsonArray = new JSONArray();
+        jsonArray.put(item1.toJson());
+        jsonArray.put(item2.toJson());
+
+        JSONObject shoppingCartJsonObject = new JSONObject();
+        shoppingCartJsonObject.put("shoppingCartList", jsonArray);
+
+        assertEquals(shoppingCartJsonObject.toString(),testShoppingCart.toJson().toString());
+
     }
 
 

@@ -56,7 +56,8 @@ public class ShoppingCart implements Writable {
         return currentAmount;
     }
 
-
+    // EFFECTS: returns a JSON Object with the shoppingCartList as key, and
+    //          the items in shoppingCart as value
     // CITATION: Copied from JsonSerializationDemo - WorkroomApp.java
     @Override
     public JSONObject toJson() {
