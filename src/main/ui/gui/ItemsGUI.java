@@ -8,6 +8,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.util.ArrayList;
 
+// Items GUI
 public class ItemsGUI extends JPanel {
 
     private ArrayList<Item> itemsAvailable;
@@ -16,6 +17,8 @@ public class ItemsGUI extends JPanel {
     private DefaultListModel<String> model;
 
 
+    // EFFECTS: initializes items and fields for ItemsGUI (and creates DefaultListModel for JList from itemsAvailable),
+    //          and adds Listener for itemList which updates Image Panel in StoreGUI
     public ItemsGUI(StoreGUI storeGUI) {
         this.storeGUI = storeGUI;
         initItems();
@@ -29,7 +32,6 @@ public class ItemsGUI extends JPanel {
         itemList = new JList<>(model);
         itemList.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
-
         itemList.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -40,10 +42,10 @@ public class ItemsGUI extends JPanel {
         });
 
         itemList.setPreferredSize(new Dimension(250, 75));
-
     }
 
 
+    // EFFECTS: returns Item that is selected by user (in the itemList), or null if none selected
     public Item itemSelected() {
         for (Item item : itemsAvailable) {
             if (item.getName().equals(itemList.getSelectedValue())) {
@@ -54,6 +56,8 @@ public class ItemsGUI extends JPanel {
     }
 
 
+    // MODIFIES: this
+    // EFFECTS: initializes items, and adds to itemsAvailable
     public void initItems() {
         Item item1 = new Item("Nordica Skis", 599.99, "./data/images/Nordica Skis.png");
         Item item2 = new Item("Burton Snowboard", 499.99, "./data/images/Burton Snowboard.png");
@@ -73,6 +77,7 @@ public class ItemsGUI extends JPanel {
     }
 
 
+    // EFFECTS: returns itemList
     public JList<String> getItemList() {
         return itemList;
     }

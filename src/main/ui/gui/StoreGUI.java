@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+// Store GUI
 public class StoreGUI extends JFrame {
 
     private static final int WIDTH = 230;
@@ -34,6 +35,7 @@ public class StoreGUI extends JFrame {
     private JsonWriter jsonWriter;
 
 
+    // EFFECTS: initializes fields and create panels for StoreGUI
     public StoreGUI() {
         super("Ski And Snowboard Store UI");
         shoppingCart = new ShoppingCart();
@@ -54,6 +56,8 @@ public class StoreGUI extends JFrame {
     }
 
 
+    // MODIFIES: this
+    // EFFECTS: creates and adds Items Panel to Main Panel, and instantiates ItemsGUI
     private void createItemsPanel() {
         itemsPanel.setBorder(BorderFactory.createTitledBorder("Items Available"));
         itemsGUI = new ItemsGUI(this);
@@ -63,6 +67,8 @@ public class StoreGUI extends JFrame {
     }
 
 
+    // MODIFIES: this
+    // EFFECTS: creates and adds ShoppingCart Panel to Main Panel, and instantiates ShoppingCartGUI
     private void createShoppingCartPanel() {
         cartPanel.setBorder(BorderFactory.createTitledBorder("Shopping Cart"));
         shoppingCartGUI = new ShoppingCartGUI(this);
@@ -72,11 +78,16 @@ public class StoreGUI extends JFrame {
     }
 
 
+    // MODIFIES: this
+    // EFFECTS: creates and adds Image Panel to Main Panel
     private void createImagePanel() {
         imagePanel.setPreferredSize(new Dimension(WIDTH,HEIGHT));
         mainPanel.add(imagePanel, BorderLayout.CENTER);
     }
 
+
+    // MODIFIES: this
+    // EFFECTS: updates Image Panel with selected item's image
     public void updateImagePanel() {
         if (imageAsLabel != null) {
             imagePanel.remove(imageAsLabel);
@@ -91,6 +102,8 @@ public class StoreGUI extends JFrame {
     }
 
 
+    // MODIFIES: this
+    // EFFECTS: creates and adds Control Panel to Main Panel, adds all control buttons
     private void createControlPanel() {
         controlPanel.setBorder(BorderFactory.createTitledBorder("Control Panel"));
 
@@ -110,6 +123,9 @@ public class StoreGUI extends JFrame {
     }
 
 
+    // MODIFIES: this
+    // EFFECTS: creates Remove Button, removes selected item from ShoppingCart and updates ShoppingCartGUI when
+    //          button is clicked
     private JButton getRemoveButton() {
         JButton removeButton = new JButton("Remove Item");
         removeButton.addActionListener(new ActionListener() {
@@ -123,6 +139,10 @@ public class StoreGUI extends JFrame {
         return removeButton;
     }
 
+
+    // MODIFIES: this
+    // EFFECTS: creates Add Button, adds selected item to ShoppingCart and updates ShoppingCartGUI when
+    //          button is clicked
     private JButton getAddButton() {
         JButton addButton = new JButton("Add Item");
         addButton.addActionListener(new ActionListener() {
@@ -136,6 +156,10 @@ public class StoreGUI extends JFrame {
         return addButton;
     }
 
+
+    // MODIFIES: this
+    // EFFECTS: creates Clear All Button, removes all items from ShoppingCart and updates ShoppingCartGUI when
+    //          button is clicked
     private JButton getClearAllButton() {
         JButton clearAllButton = new JButton("Clear All");
         clearAllButton.addActionListener(new ActionListener() {
@@ -148,6 +172,9 @@ public class StoreGUI extends JFrame {
         return clearAllButton;
     }
 
+
+    // MODIFIES: this
+    // EFFECTS: creates Load Button, loads ShoppingCart from JSON_STORE
     private JButton getLoadButton() {
         JButton loadButton = new JButton("Load");
         loadButton.addActionListener(new ActionListener() {
@@ -166,6 +193,9 @@ public class StoreGUI extends JFrame {
         return loadButton;
     }
 
+
+    // MODIFIES: this
+    // EFFECTS: creates Save Button, saves current ShoppingCart to JSON_STORE
     private JButton getSaveButton() {
         JButton saveButton = new JButton("Save");
         saveButton.addActionListener(new ActionListener() {
@@ -185,10 +215,13 @@ public class StoreGUI extends JFrame {
     }
 
 
+    // EFFECTS: instantiates StoreGUI
     public static void main(String[] args) {
         new StoreGUI();
     }
 
+
+    // EFFECTS: returns current ShoppingCart
     public ShoppingCart getShoppingCart() {
         return shoppingCart;
     }
