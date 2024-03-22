@@ -39,5 +39,29 @@ to build an online store.
 - As a user, I want to be able to view a list of all the items I've added to my shopping cart. 
 - As a user, I want to be able to get the total cost of my shopping cart.
 - As a user, I want to have the option to save my shopping cart list to file (from the main menu).
-- As a user, I want to have the option to load my shopping cart list from file when I start the application. 
+- As a user, I want to have the option to load my shopping cart list from file when I start the application.
+
+
+<br>
+
+## Instructions for Grader
+<br>
+
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by selecting an item
+in the "Items Available" panel, then clicking the "Add Item" button in the "Control Panel." 
+
+
+- You can generate the second required action related to the user story "removing an X from a Y" by selecting an item
+in the "Shopping Cart" panel, then clicking the "Remove Item" button in the "Control Panel."
+
+
+- You can locate my visual component by selecting an item in the "Items Available" panel. It will display an image
+of the item that has been selected. 
+
+
+- You can save the state of my application by clicking the "Save" button in the "Control" panel. 
+
+
+- You can reload the state of my application by clicking the "Load" button in the "Control" panel. 
+
 
