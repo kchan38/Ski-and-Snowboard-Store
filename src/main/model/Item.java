@@ -10,13 +10,16 @@ public class Item implements Writable {
     private Double cost;
     private boolean isAvailable;
 
+    private String imagePath;
+
 
     // REQUIRES: name must be non-empty, cost > 0.00
-    // EFFECTS: constructs an item with name and cost and is available
-    public Item(String name, Double cost) {
+    // EFFECTS: constructs an item with name and cost and is available and imagePath
+    public Item(String name, Double cost, String imagePath) {
         this.name = name;
         this.cost = cost;
         this.isAvailable = true;
+        this.imagePath = imagePath;
     }
 
 
@@ -35,6 +38,11 @@ public class Item implements Writable {
     // EFFECTS: returns true if item is available, false otherwise
     public Boolean getIsAvailable() {
         return this.isAvailable;
+    }
+
+    // EFFECTS: returns image path
+    public String getImagePath() {
+        return this.imagePath;
     }
 
 
@@ -82,8 +90,8 @@ public class Item implements Writable {
     }
 
 
-    // EFFECTS: returns a JSON Object with name/cost/isAvailable as key, and
-    //          the corresponding name/cost/isAvailable as value
+    // EFFECTS: returns a JSON Object with name/cost/isAvailable/imagePath as key, and
+    //          the corresponding name/cost/isAvailable/imagePath as value
     // CITATION: Copied from JsonSerializationDemo - WorkroomApp.java
     @Override
     public JSONObject toJson() {
@@ -91,6 +99,7 @@ public class Item implements Writable {
         json.put("name", name);
         json.put("cost", cost);
         json.put("isAvailable", isAvailable);
+        json.put("imagePath", imagePath);
         return json;
     }
 

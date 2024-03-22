@@ -39,9 +39,12 @@ public class JsonReaderTest extends JsonTest {
             ShoppingCart sc = reader.read();
             List<Item> items = sc.getShoppingCartList();
             assertEquals(3, items.size());
-            checkItem("Rainbow Skis", 599.99, true, items.get(0));
-            checkItem("Smith Ski Helmet", 196.99, true, items.get(1));
-            checkItem("FeelGood Snowboard", 499.99, true, items.get(2));
+            checkItem("Rainbow Skis", 599.99, true,
+                    "./data/images/image1.png", items.get(0));
+            checkItem("Smith Ski Helmet", 196.99, true,
+                    "./data/images/image1.png", items.get(1));
+            checkItem("FeelGood Snowboard", 499.99, true,
+                    "./data/images/image1.png", items.get(2));
         } catch (IOException e) {
             fail("Could not read from file");
         }

@@ -86,12 +86,12 @@ public class StoreApp {
     // MODIFIES: this
     // EFFECTS: initializes items
     private void init() {
-        Item item1 = new Item("Rainbow Skis", 599.99);
-        Item item2 = new Item("FeelGood Snowboard", 499.99);
-        Item item3 = new Item("Salomon Ski Boots", 349.99);
-        Item item4 = new Item("K2 Snowboard Boots", 299.99);
-        Item item5 = new Item("Oakley Ski Goggles", 189.99);
-        Item item6 = new Item("Smith Ski Helmet", 196.99);
+        Item item1 = new Item("Nordica Skis", 599.99, "./data/images/Nordica Skis.png");
+        Item item2 = new Item("Burton Snowboard", 499.99, "./data/images/Burton Snowboard.png");
+        Item item3 = new Item("Salomon Ski Boots", 349.99, "./data/images/Salomon Ski Boots.jpeg");
+        Item item4 = new Item("K2 Snowboard Boots", 299.99, "./data/images/K2 Snowboard Boots.png");
+        Item item5 = new Item("Oakley Ski Goggles", 189.99, "./data/images/Oakley Ski Goggles.png");
+        Item item6 = new Item("Smith Ski Helmet", 196.99, "./data/images/Smith Ski Helmet.png");
 
         this.itemsAvailable = new ArrayList<Item>();
 
@@ -273,7 +273,7 @@ public class StoreApp {
 
     // EFFECTS: saves the shoppingCart to file
     // CITATION: Copied from JsonSerializationDemo - WorkroomApp.java
-    private void saveShoppingCart() {
+    public void saveShoppingCart() {
         try {
             jsonWriter.open();
             jsonWriter.write(shoppingCart);
@@ -288,7 +288,7 @@ public class StoreApp {
     // MODIFIES: this
     // EFFECTS: loads shoppingCart from file
     // CITATION: Copied from JsonSerializationDemo - WorkroomApp.java
-    private void loadShoppingCart() {
+    public void loadShoppingCart() {
         try {
             shoppingCart = jsonReader.read();
             System.out.println("Loaded Shopping Cart from " + JSON_STORE);

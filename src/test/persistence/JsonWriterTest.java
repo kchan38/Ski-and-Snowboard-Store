@@ -43,9 +43,9 @@ public class JsonWriterTest extends JsonTest {
     void testWriterShoppingCart3Items() {
         try {
             ShoppingCart sc = new ShoppingCart();
-            sc.addItem(new Item("Rainbow Skis", 599.99));
-            sc.addItem(new Item("Smith Ski Helmet", 196.99));
-            sc.addItem(new Item("FeelGood Snowboard", 499.99));
+            sc.addItem(new Item("Rainbow Skis", 599.99, "./data/images/image1.png"));
+            sc.addItem(new Item("Smith Ski Helmet", 196.99, "./data/images/image1.png"));
+            sc.addItem(new Item("FeelGood Snowboard", 499.99,"./data/images/image1.png"));
             JsonWriter writer = new JsonWriter("./data/testWriterShoppingCart3Items.json");
             writer.open();
             writer.write(sc);
@@ -55,9 +55,12 @@ public class JsonWriterTest extends JsonTest {
             sc = reader.read();
             List<Item> items = sc.getShoppingCartList();
             assertEquals(3, items.size());
-            checkItem("Rainbow Skis", 599.99, true, items.get(0));
-            checkItem("Smith Ski Helmet", 196.99, true, items.get(1));
-            checkItem("FeelGood Snowboard", 499.99, true, items.get(2));
+            checkItem("Rainbow Skis", 599.99, true,
+                    "./data/images/image1.png", items.get(0));
+            checkItem("Smith Ski Helmet", 196.99, true,
+                    "./data/images/image1.png", items.get(1));
+            checkItem("FeelGood Snowboard", 499.99, true,
+                    "./data/images/image1.png", items.get(2));
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");

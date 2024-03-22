@@ -62,8 +62,9 @@ public class JsonReader {
         String name = jsonObject.getString("name");
         Double cost = jsonObject.getDouble("cost");
         Boolean isAvailable = jsonObject.getBoolean("isAvailable");
+        String imagePath = jsonObject.getString("imagePath");
 
-        Item item = new Item(name, cost);
+        Item item = new Item(name, cost, imagePath);
         item.setIsAvailable(isAvailable);
         sc.addItem(item);
     }

@@ -20,9 +20,9 @@ public class ShoppingCartTest {
 
     @Test
     void testAddItem() {
-        Item item1 = new Item("Pink Skis", 589.99);
-        Item item2 = new Item("Blue Skis", 499.99);
-        Item item3 = new Item("Red Skis", 799.99);
+        Item item1 = new Item("Pink Skis", 589.99, "./data/images/image1.png");
+        Item item2 = new Item("Blue Skis", 499.99, "./data/images/image1.png");
+        Item item3 = new Item("Red Skis", 799.99, "./data/images/image1.png");
 
         testShoppingCart.addItem(item1);
         assertEquals(1, testShoppingCart.getShoppingCartList().size());
@@ -43,9 +43,9 @@ public class ShoppingCartTest {
 
     @Test
     void testRemoveItem() {
-        Item item1 = new Item("Pink Skis", 589.99);
-        Item item2 = new Item("Blue Skis", 499.99);
-        Item item3 = new Item("Red Skis", 799.99);
+        Item item1 = new Item("Pink Skis", 589.99, "./data/images/image1.png");
+        Item item2 = new Item("Blue Skis", 499.99, "./data/images/image1.png");
+        Item item3 = new Item("Red Skis", 799.99, "./data/images/image1.png");
 
         testShoppingCart.addItem(item1);
         testShoppingCart.addItem(item2);
@@ -62,12 +62,28 @@ public class ShoppingCartTest {
         assertEquals(item3, testShoppingCart.getShoppingCartList().get(0));
     }
 
+    @Test
+    void testRemoveAllItems() {
+        Item item1 = new Item("Pink Skis", 589.99, "./data/images/image1.png");
+        Item item2 = new Item("Blue Skis", 499.99, "./data/images/image1.png");
+        Item item3 = new Item("Red Skis", 799.99, "./data/images/image1.png");
+
+        testShoppingCart.addItem(item1);
+        testShoppingCart.addItem(item2);
+        testShoppingCart.addItem(item3);
+        assertEquals(3, testShoppingCart.getShoppingCartList().size());
+        assertEquals(item1, testShoppingCart.getShoppingCartList().get(0));
+
+        testShoppingCart.removeAllItems();
+        assertEquals(0, testShoppingCart.getShoppingCartList().size());
+    }
+
 
     @Test
     void testGetShoppingCartList() {
         assertFalse(null == testShoppingCart.getShoppingCartList());
 
-        Item item1 = new Item("Pink Skis", 589.99);
+        Item item1 = new Item("Pink Skis", 589.99, "./data/images/image1.png");
         testShoppingCart.addItem(item1);
         assertEquals(item1, testShoppingCart.getShoppingCartList().get(0));
 
@@ -76,9 +92,9 @@ public class ShoppingCartTest {
 
     @Test
     void testGetTotalCost() {
-        Item item1 = new Item("Pink Skis", 589.99);
-        Item item2 = new Item("Blue Skis", 499.99);
-        Item item3 = new Item("Red Skis", 799.99);
+        Item item1 = new Item("Pink Skis", 589.99, "./data/images/image1.png");
+        Item item2 = new Item("Blue Skis", 499.99, "./data/images/image1.png");
+        Item item3 = new Item("Red Skis", 799.99, "./data/images/image1.png");
 
         testShoppingCart.addItem(item1);
         testShoppingCart.addItem(item2);
@@ -98,11 +114,11 @@ public class ShoppingCartTest {
 
     @Test
     void testToJsonMultipleItems() {
-        Item item1 = new Item("Pink Skis", 589.99);
+        Item item1 = new Item("Pink Skis", 589.99, "./data/images/image1.png");
         assertTrue(item1.getIsAvailable());
         testShoppingCart.addItem(item1);
 
-        Item item2 = new Item("Blue Skis", 799.99);
+        Item item2 = new Item("Blue Skis", 499.99, "./data/images/image1.png");
         assertTrue(item1.getIsAvailable());
         testShoppingCart.addItem(item2);
 

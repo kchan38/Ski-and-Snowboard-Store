@@ -33,6 +33,15 @@ public class ShoppingCart implements Writable {
     }
 
 
+    // MODIFIES: this
+    // EFFECTS: removes all items from shopping cart list
+    public void removeAllItems() {
+        while (shoppingCartList.size() > 0) {
+            shoppingCartList.remove(0);
+        }
+    }
+
+
     // EFFECTS: returns shopping cart list
     public ArrayList<Item> getShoppingCartList() {
         return shoppingCartList;

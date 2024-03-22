@@ -2,16 +2,19 @@
     {
         "isAvailable": true,
         "cost": 599.99,
+        "imagePath": "./data/images/image1.png",
         "name": "Rainbow Skis"
     },
     {
         "isAvailable": true,
         "cost": 196.99,
+        "imagePath": "./data/images/image1.png",
         "name": "Smith Ski Helmet"
     },
     {
         "isAvailable": true,
         "cost": 499.99,
+        "imagePath": "./data/images/image1.png",
         "name": "FeelGood Snowboard"
     }
 ]}
