@@ -26,7 +26,8 @@ public class ItemsGUI extends JPanel {
         model = new DefaultListModel<>();
 
         for (Item item : itemsAvailable) {
-            model.addElement(item.getName());
+            String nameAndCost = item.getName() + "  $" + item.getCost();
+            model.addElement(nameAndCost);
         }
 
         itemList = new JList<>(model);
@@ -48,7 +49,8 @@ public class ItemsGUI extends JPanel {
     // EFFECTS: returns Item that is selected by user (in the itemList), or null if none selected
     public Item itemSelected() {
         for (Item item : itemsAvailable) {
-            if (item.getName().equals(itemList.getSelectedValue())) {
+            String nameAndCost = item.getName() + "  $" + item.getCost();
+            if (nameAndCost.equals(itemList.getSelectedValue())) {
                 return item;
             }
         }

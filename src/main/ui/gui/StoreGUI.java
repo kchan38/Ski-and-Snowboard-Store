@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 // Store GUI
 public class StoreGUI extends JFrame {
@@ -28,6 +29,8 @@ public class StoreGUI extends JFrame {
     private JPanel imagePanel = new JPanel();
 
     private JLabel imageAsLabel = null;
+    private JLabel totalCostAsLabel = null;
+    private JScrollPane scrollPane = null;
 
     private static final String JSON_STORE = "./data/ShoppingCart.json";
     private ShoppingCart shoppingCart;
@@ -51,7 +54,7 @@ public class StoreGUI extends JFrame {
 
         add(mainPanel, BorderLayout.NORTH);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(900,450);
+        setSize(1000,500);
         setVisible(true);
     }
 
@@ -68,13 +71,37 @@ public class StoreGUI extends JFrame {
 
 
     // MODIFIES: this
-    // EFFECTS: creates and adds ShoppingCart Panel to Main Panel, and instantiates ShoppingCartGUI
+    // EFFECTS: creates and adds ShoppingCart Panel and Cost Label to Main Panel, and instantiates ShoppingCartGUI
     private void createShoppingCartPanel() {
         cartPanel.setBorder(BorderFactory.createTitledBorder("Shopping Cart"));
+
         shoppingCartGUI = new ShoppingCartGUI(this);
-        JScrollPane scrollPane = new JScrollPane(shoppingCartGUI.getCartList());
+
+        scrollPane = new JScrollPane(shoppingCartGUI.getCartList());
         cartPanel.add(scrollPane);
+
+        totalCostAsLabel = new JLabel("Total Cost: $0.00");
+        cartPanel.add(totalCostAsLabel, BorderLayout.SOUTH);
+
         mainPanel.add(cartPanel, BorderLayout.EAST);
+    }
+
+
+    // MODIFIES: this
+    // EFFECTS: updates Cost Label with new total cost
+    public void updateCostLabel() {
+        if (totalCostAsLabel != null) {
+            cartPanel.remove(totalCostAsLabel);
+        }
+
+        Double totalCostDouble = shoppingCartGUI.getTotalCost();
+        String formattedCostString = new DecimalFormat("0.00").format(totalCostDouble).toString();
+        String totalCostString = "Total Cost: $" + formattedCostString;
+
+        totalCostAsLabel = new JLabel(totalCostString);
+        cartPanel.add(totalCostAsLabel, BorderLayout.SOUTH);
+        cartPanel.validate();
+        cartPanel.repaint();
     }
 
 

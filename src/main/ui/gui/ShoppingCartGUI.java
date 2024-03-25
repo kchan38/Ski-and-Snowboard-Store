@@ -4,6 +4,9 @@ import model.Item;
 import model.ShoppingCart;
 
 import javax.swing.*;
+import javax.swing.event.ListDataEvent;
+import javax.swing.event.ListDataListener;
+import java.awt.*;
 import java.util.ArrayList;
 
 // ShoppingCart GUI
@@ -12,6 +15,7 @@ public class ShoppingCartGUI extends JPanel {
     private StoreGUI storeGUI;
     private JList<String> cartList;
     private DefaultListModel<String> model;
+    private JLabel totalCostAsLabel = null;
 
 
     // EFFECTS: initializes fields for ShoppingCartGUI (and creates DefaultListModel and JList)
@@ -23,7 +27,7 @@ public class ShoppingCartGUI extends JPanel {
 
 
     // MODIFIES: this
-    // EFFECTS: clears model and adds all items from ShoppingCartList to model
+    // EFFECTS: clears model and adds all items from ShoppingCartList to model and updates Cost Label
     public void update() {
         ShoppingCart shoppingCart = storeGUI.getShoppingCart();
         model.clear();
@@ -31,8 +35,18 @@ public class ShoppingCartGUI extends JPanel {
         ArrayList<Item> items = shoppingCart.getShoppingCartList();
 
         for (Item item : items) {
-            model.addElement(item.getName());
+            String nameAndCost = item.getName() + "  $" + item.getCost();
+            model.addElement(nameAndCost);
         }
+
+        storeGUI.updateCostLabel();
+    }
+
+
+    // EFFECTS: returns total cost of all items in shopping cart
+    public Double getTotalCost() {
+        ShoppingCart shoppingCart = storeGUI.getShoppingCart();
+        return shoppingCart.getTotalCost();
     }
 
 
@@ -43,7 +57,9 @@ public class ShoppingCartGUI extends JPanel {
         ArrayList<Item> items = shoppingCart.getShoppingCartList();
 
         for (Item item : items) {
-            if (item.getName().equals(cartList.getSelectedValue())) {
+            String nameAndCost = item.getName() + "  $" + item.getCost();
+
+            if (nameAndCost.equals(cartList.getSelectedValue())) {
                 return item;
             }
         }
