@@ -18,7 +18,7 @@ public class ItemsGUI extends JPanel {
 
 
     // EFFECTS: initializes items and fields for ItemsGUI (and creates DefaultListModel for JList from itemsAvailable),
-    //          and adds Listener for itemList which updates Image Panel in StoreGUI
+    //          and adds Listener for itemList which updates Image Panel in StoreGUI when an item is selected
     public ItemsGUI(StoreGUI storeGUI) {
         this.storeGUI = storeGUI;
         initItems();

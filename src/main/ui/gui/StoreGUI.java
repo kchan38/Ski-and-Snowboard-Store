@@ -151,8 +151,8 @@ public class StoreGUI extends JFrame {
 
 
     // MODIFIES: this
-    // EFFECTS: creates Remove Button, removes selected item from ShoppingCart and updates ShoppingCartGUI when
-    //          button is clicked
+    // EFFECTS: creates and returns Remove Button, removes selected item from ShoppingCart and updates ShoppingCartGUI
+    //          when button is clicked
     private JButton getRemoveButton() {
         JButton removeButton = new JButton("Remove Item");
         removeButton.addActionListener(new ActionListener() {
@@ -168,7 +168,7 @@ public class StoreGUI extends JFrame {
 
 
     // MODIFIES: this
-    // EFFECTS: creates Add Button, adds selected item to ShoppingCart and updates ShoppingCartGUI when
+    // EFFECTS: creates and returns Add Button, adds selected item to ShoppingCart and updates ShoppingCartGUI when
     //          button is clicked
     private JButton getAddButton() {
         JButton addButton = new JButton("Add Item");
@@ -185,8 +185,8 @@ public class StoreGUI extends JFrame {
 
 
     // MODIFIES: this
-    // EFFECTS: creates Clear All Button, removes all items from ShoppingCart and updates ShoppingCartGUI when
-    //          button is clicked
+    // EFFECTS: creates and returns Clear All Button, removes all items from ShoppingCart and updates ShoppingCartGUI
+    //          when button is clicked
     private JButton getClearAllButton() {
         JButton clearAllButton = new JButton("Clear All");
         clearAllButton.addActionListener(new ActionListener() {
@@ -201,7 +201,7 @@ public class StoreGUI extends JFrame {
 
 
     // MODIFIES: this
-    // EFFECTS: creates Load Button, loads ShoppingCart from JSON_STORE
+    // EFFECTS: creates and returns Load Button, loads ShoppingCart from JSON_STORE when button is clicked
     private JButton getLoadButton() {
         JButton loadButton = new JButton("Load");
         loadButton.addActionListener(new ActionListener() {
@@ -222,7 +222,7 @@ public class StoreGUI extends JFrame {
 
 
     // MODIFIES: this
-    // EFFECTS: creates Save Button, saves current ShoppingCart to JSON_STORE
+    // EFFECTS: creates and returns Save Button, saves current ShoppingCart to JSON_STORE when button is clicked
     private JButton getSaveButton() {
         JButton saveButton = new JButton("Save");
         saveButton.addActionListener(new ActionListener() {
@@ -242,7 +242,7 @@ public class StoreGUI extends JFrame {
     }
 
 
-    // EFFECTS: instantiates StoreGUI
+    // EFFECTS: calls StoreGUI
     public static void main(String[] args) {
         new StoreGUI();
     }

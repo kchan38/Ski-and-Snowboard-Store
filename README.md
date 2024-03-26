@@ -59,9 +59,9 @@ in the "Shopping Cart" panel, then clicking the "Remove Item" button in the "Con
 of the item that has been selected. 
 
 
-- You can save the state of my application by clicking the "Save" button in the "Control" panel. 
+- You can save the state of my application by clicking the "Save" button in the "Control Panel." 
 
 
-- You can reload the state of my application by clicking the "Load" button in the "Control" panel. 
+- You can reload the state of my application by clicking the "Load" button in the "Control Panel." 
 
 

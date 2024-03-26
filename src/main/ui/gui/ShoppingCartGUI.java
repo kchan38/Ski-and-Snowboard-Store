@@ -4,9 +4,6 @@ import model.Item;
 import model.ShoppingCart;
 
 import javax.swing.*;
-import javax.swing.event.ListDataEvent;
-import javax.swing.event.ListDataListener;
-import java.awt.*;
 import java.util.ArrayList;
 
 // ShoppingCart GUI
