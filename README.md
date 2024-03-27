@@ -65,3 +65,13 @@ of the item that has been selected.
 - You can reload the state of my application by clicking the "Load" button in the "Control Panel." 
 
 
+
+<br>
+
+## Notes/Citations
+<br>
+
+- Learned JSwing from https://www.youtube.com/watch?v=5o3fMLPY7qY&ab_channel=AlexLee
+
+- Learned JPanel/JFrame from https://www.youtube.com/watch?v=E6aomMUyMUU&t=460s&ab_channel=TheBlindProgrammer
+
