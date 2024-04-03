@@ -1,5 +1,7 @@
 package ui.gui;
 
+import model.Event;
+import model.EventLog;
 import model.Item;
 import model.ShoppingCart;
 import persistence.JsonReader;
@@ -9,12 +11,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
 // Store GUI
-public class StoreGUI extends JFrame {
+public class StoreGUI extends JFrame implements WindowListener {
 
     private static final int WIDTH = 230;
     private static final int HEIGHT = 325;
@@ -53,9 +57,12 @@ public class StoreGUI extends JFrame {
         createImagePanel();
 
         add(mainPanel, BorderLayout.NORTH);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setSize(1000,500);
         setVisible(true);
+
+        addWindowListener(this);
+
     }
 
 
@@ -254,4 +261,49 @@ public class StoreGUI extends JFrame {
     }
 
 
+    // EFFECTS: calls printLog, then closes application
+    @Override
+    public void windowClosing(WindowEvent e) {
+        printLog(EventLog.getInstance());
+        System.exit(0);
+    }
+
+
+    // EFFECTS: prints each event from EventLog
+    public void printLog(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next);
+        }
+    }
+
+    
+    @Override
+    public void windowClosed(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+
+    }
 }

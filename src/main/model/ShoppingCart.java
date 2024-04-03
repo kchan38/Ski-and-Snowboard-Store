@@ -21,6 +21,7 @@ public class ShoppingCart implements Writable {
     // MODIFIES: this
     // EFFECTS: adds item to shopping cart list
     public void addItem(Item item) {
+        EventLog.getInstance().logEvent(new Event("Added " + item.getName() + " to the Shopping Cart."));
         shoppingCartList.add(item);
     }
 
@@ -29,6 +30,7 @@ public class ShoppingCart implements Writable {
     // MODIFIES: this
     // EFFECTS: removes item from shopping cart list
     public void removeItem(Item item) {
+        EventLog.getInstance().logEvent(new Event("Removed " + item.getName() + " from the Shopping Cart."));
         shoppingCartList.remove(item);
     }
 
@@ -36,6 +38,7 @@ public class ShoppingCart implements Writable {
     // MODIFIES: this
     // EFFECTS: removes all items from shopping cart list
     public void removeAllItems() {
+        EventLog.getInstance().logEvent(new Event("Removed all items from the Shopping Cart."));
         while (shoppingCartList.size() > 0) {
             shoppingCartList.remove(0);
         }

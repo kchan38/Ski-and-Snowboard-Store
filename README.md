@@ -68,6 +68,32 @@ of the item that has been selected.
 
 <br>
 
+## Phase 4: Task 2
+<br>
+
+Tue Apr 02 17:33:12 PDT 2024
+Added Salomon Ski Boots to the Shopping Cart.
+
+Tue Apr 02 17:33:13 PDT 2024
+Added Oakley Ski Goggles to the Shopping Cart.
+
+Tue Apr 02 17:33:17 PDT 2024
+Added K2 Snowboard Boots to the Shopping Cart.
+
+Tue Apr 02 17:33:17 PDT 2024
+Added K2 Snowboard Boots to the Shopping Cart.
+
+Tue Apr 02 17:33:20 PDT 2024
+Removed K2 Snowboard Boots from the Shopping Cart.
+
+Tue Apr 02 17:33:25 PDT 2024
+Removed all items from the Shopping Cart.
+
+
+
+
+<br>
+
 ## Notes/Citations
 <br>
 
