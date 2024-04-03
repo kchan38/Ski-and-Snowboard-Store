@@ -106,7 +106,7 @@ point of access and one instance of this ShoppingCart object.
 <br>
 <br>
 
-The next factoring I would perform on this application in the future would be to move some of the methods regarding the
+The next refactoring I would perform on this application in the future would be to move some of the methods regarding the
 Control Panel in the StoreGUI into a new class. This would be related to the Single Responsibility Principle as I think
 many of the methods related to the buttons in the Control Panel are adding extra functionality to the StoreGUI class
 and giving the StoreGUI class an extra responsibility that can be split into two separate classes. Therefore, I would
