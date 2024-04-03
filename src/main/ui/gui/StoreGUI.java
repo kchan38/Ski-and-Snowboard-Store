@@ -9,16 +9,13 @@ import persistence.JsonWriter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
 // Store GUI
-public class StoreGUI extends JFrame implements WindowListener {
+public class StoreGUI extends JFrame {
 
     private static final int WIDTH = 230;
     private static final int HEIGHT = 325;
@@ -48,7 +45,6 @@ public class StoreGUI extends JFrame implements WindowListener {
         shoppingCart = new ShoppingCart();
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
-
         mainPanel.setLayout(new BorderLayout());
 
         createItemsPanel();
@@ -61,8 +57,22 @@ public class StoreGUI extends JFrame implements WindowListener {
         setSize(1000,500);
         setVisible(true);
 
-        addWindowListener(this);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                printLog(EventLog.getInstance());
+                System.exit(0);
+            }
+        });
+    }
 
+
+    // EFFECTS: prints each event from EventLog
+    public void printLog(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next);
+        }
     }
 
 
@@ -260,50 +270,4 @@ public class StoreGUI extends JFrame implements WindowListener {
         return shoppingCart;
     }
 
-
-    // EFFECTS: calls printLog, then closes application
-    @Override
-    public void windowClosing(WindowEvent e) {
-        printLog(EventLog.getInstance());
-        System.exit(0);
-    }
-
-
-    // EFFECTS: prints each event from EventLog
-    public void printLog(EventLog el) {
-        for (Event next : el) {
-            System.out.println(next);
-        }
-    }
-
-    
-    @Override
-    public void windowClosed(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowOpened(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowIconified(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowDeiconified(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowActivated(WindowEvent e) {
-
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent e) {
-
-    }
 }

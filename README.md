@@ -94,7 +94,37 @@ Removed all items from the Shopping Cart.
 
 ## Phase 4: Task 3
 <br>
+The first refactoring I would perform if I had more time on this project would be using the Singleton Pattern. I would 
+use Singleton on the JsonReader and JsonWriter classes. Singleton Pattern is important for ensuring a class only has 
+one instance and to provide a global point of access to it. I would want to only get a single instance of JsonReader 
+and JsonWriter in the other classes, instead of allowing this to be instantiated multiple times around the application.
+Currently, both JsonReader and JsonWriter are instantiated in the StoreApp and the StoreGUI. Another place I would want
+to refactor is using the Singleton Pattern in the ShoppingCart class. ShoppingCart is being instantiated in 3 different
+classes currently, the StoreApp, the StoreGUI, and the JsonReader classes. It would be ideal to only have one single
+point of access and one instance of this ShoppingCart object. 
 
+<br>
+<br>
+
+The next factoring I would perform on this application in the future would be to move some of the methods regarding the
+Control Panel in the StoreGUI into a new class. This would be related to the Single Responsibility Principle as I think
+many of the methods related to the buttons in the Control Panel are adding extra functionality to the StoreGUI class
+and giving the StoreGUI class an extra responsibility that can be split into two separate classes. Therefore, I would
+make a new class called ControlPanelGUI that would be instantiated in the method called createControlPanel in the
+StoreGUI. All the functionality related to making the “Add”, “Remove”, “Clear All”, “Load”, and “Save” buttons would be
+moved into the ControlPanelGUI class. This ensures that the creation of the buttons and the listener for the buttons
+would all be done in a different class, away from the StoreGUI class so that the StoreGUI class does not need to take
+on that additional responsibility. In addition, to further refactor the application, I would add the Observer Pattern
+for the GUI. Currently, there is a bidirectional relationship in my UML diagram between StoreGUI and ItemsGUI, and
+StoreGUI and ShoppingCartGUI. Once I add the ControlPanelGUI, there would be an additional bidirectional relationship
+between ControlPanelGUI and StoreGUI. Refactoring using the Observer Pattern can allow for less coupling. In this case,
+the ControlPanelGUI (which would have all the button listeners) will be the ConcreteSubject, and whenever the button is
+pressed, it will call the method notifyObservers. The Abstract Subject class will have the implementation for
+notifyObservers and call an update method. The update method will be in the Observer Interface, and be implemented
+in all the ConcreteObservers which would include the ShoppingCartGUI and ItemsGUI classes in my current application.
+Therefore, the ShoppingCartGUI and ItemsGUI will be updated to display the new changes that the user selects (either
+adding an item, removing an item, clearing all items, saving and loading). This will reduce the coupling between all
+the classes in the GUI and allow for all dependents to be notified when one object changes.
 
 
 
